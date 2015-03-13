@@ -1,0 +1,16 @@
+﻿1. Construct office map in code
+2. Contruct location map (grid). Automatic algorithm
+	Fully automatic: union if location is less than 30-40%
+3. Visualize grid
+4. Choosing location. RSSI visualization by clicking on location
+5. Retrieve measurements
+6. Save/Load location map
+7. Save/Load radio map
+
+
+Use cases:
+1. Create default grid (locations splited by walls) -> small locations are merged with the big neighbour;
+2. Choose location -> mark location; show <network, RSSI> list;
+3. Retrieve measurements for location -> add measurement for location; mark location with color;
+4. Save locations -> for future modification all locations with fingerprints upload to file;
+5. Save radio map -> Only fingerprints are uploaded to file for simulator

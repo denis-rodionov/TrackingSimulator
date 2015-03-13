@@ -1,0 +1,39 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrackingSimulator", "TrackingSimulator\TrackingSimulator.csproj", "{FFBDDD98-4CB6-4F0A-9FE2-E2564ADF0A4A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RssiReader", "RssiReader\RssiReader.csproj", "{26092B6F-A007-45E0-84AA-9DC0D97BD9FF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LocalizationCore", "LocalizationCore\LocalizationCore.csproj", "{E069475A-48ED-44A1-9F21-23CA8DEE9BDC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{1B25236E-5489-459C-A049-9932B792931B}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FFBDDD98-4CB6-4F0A-9FE2-E2564ADF0A4A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FFBDDD98-4CB6-4F0A-9FE2-E2564ADF0A4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FFBDDD98-4CB6-4F0A-9FE2-E2564ADF0A4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FFBDDD98-4CB6-4F0A-9FE2-E2564ADF0A4A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{26092B6F-A007-45E0-84AA-9DC0D97BD9FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{26092B6F-A007-45E0-84AA-9DC0D97BD9FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{26092B6F-A007-45E0-84AA-9DC0D97BD9FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{26092B6F-A007-45E0-84AA-9DC0D97BD9FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E069475A-48ED-44A1-9F21-23CA8DEE9BDC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E069475A-48ED-44A1-9F21-23CA8DEE9BDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E069475A-48ED-44A1-9F21-23CA8DEE9BDC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E069475A-48ED-44A1-9F21-23CA8DEE9BDC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

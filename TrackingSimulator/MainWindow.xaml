@@ -1,0 +1,226 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:chartingToolkit="clr-namespace:System.Windows.Controls.DataVisualization.Charting;assembly=System.Windows.Controls.DataVisualization.Toolkit" x:Class="TrackingSimulator.MainWindow"
+        Title="MainWindow"
+        Loaded="Window_Loaded_1" Width="1280" Height="768" Left="0" Top="0"
+        WindowState="Maximized"
+        Name="MainWindow1">
+    <Grid>
+        <ListBox x:Name="lbxEvents" IsSynchronizedWithCurrentItem="True" Margin="1080,10,-120,695" Visibility="Hidden"/>
+        <Canvas Visibility="Visible" x:Name="MainCanvas" HorizontalAlignment="Left" Height="384" Margin="10,10,0,0" VerticalAlignment="Top" Width="1016" Background="WhiteSmoke"/>
+
+        <chartingToolkit:Chart HorizontalAlignment="Left" Margin="666,421,0,0" VerticalAlignment="Top" Height="276" Width="360" Visibility="Visible">
+            <chartingToolkit:Chart.Axes>
+                <chartingToolkit:LinearAxis Title="Average time (in milliseconds)" Orientation="Y" />
+                <chartingToolkit:LinearAxis Title="Parameter value" Orientation="X" />
+            </chartingToolkit:Chart.Axes>
+            <chartingToolkit:Chart.Series>
+                <chartingToolkit:LineSeries x:Name="Current" Title="Error" AnimationSequence="FirstToLast"
+                                           ItemsSource="{Binding}"
+                                           DependentValueBinding="{Binding Value}" 
+                                           IndependentValueBinding="{Binding Key}" TransitionDuration="0">
+
+                    <chartingToolkit:LineSeries.DataPointStyle>
+                        <Style TargetType="chartingToolkit:LineDataPoint">
+                            <Setter Property="Width" Value="0"/>
+                            <Setter Property="Height" Value="0"/>
+                            <Setter Property="Background" Value="Blue"/>
+                        </Style>
+                    </chartingToolkit:LineSeries.DataPointStyle>
+
+                </chartingToolkit:LineSeries>
+
+            </chartingToolkit:Chart.Series>
+        </chartingToolkit:Chart>
+
+        <chartingToolkit:Chart Name="ResultChart" HorizontalAlignment="Left" Margin="1101,274,-219,0" VerticalAlignment="Top" Height="276" Width="390">
+            <chartingToolkit:Chart.Axes>
+                <chartingToolkit:LinearAxis Title="Average Error (in meters)" Orientation="Y" ShowGridLines="True" Minimum="Auto" />
+            </chartingToolkit:Chart.Axes>
+            <chartingToolkit:Chart.Series>
+                <chartingToolkit:ColumnSeries x:Name="ResultSeries" Title="Error"
+                                           ItemsSource="{Binding}"
+                                           DependentValueBinding="{Binding Value}" 
+                                           IndependentValueBinding="{Binding Key}" TransitionDuration="0">
+
+                </chartingToolkit:ColumnSeries>
+                <chartingToolkit:ColumnSeries x:Name="ResultSeriesVar" Title="Variance"
+                                           ItemsSource="{Binding}"
+                                           DependentValueBinding="{Binding Value}" 
+                                           IndependentValueBinding="{Binding Key}" TransitionDuration="0">
+
+                </chartingToolkit:ColumnSeries>
+            </chartingToolkit:Chart.Series>
+        </chartingToolkit:Chart>
+
+        <chartingToolkit:Chart Name="LineChart" HorizontalAlignment="Left" Margin="19,356,0,0" VerticalAlignment="Top" Height="362" Width="627" BorderThickness="0">
+            <chartingToolkit:Chart.Axes>
+                <chartingToolkit:LinearAxis Title="Estimation Error (in meters)" Orientation="Y" Minimum="0" />
+                <chartingToolkit:LinearAxis Title="Samples reading" Orientation="X" />
+            </chartingToolkit:Chart.Axes>
+            <chartingToolkit:LineSeries x:Name="FinalWlan" Title="Blue Robin" AnimationSequence="FirstToLast"
+        		ItemsSource="{Binding}"
+        		DependentValueBinding="{Binding Value}" 
+        		IndependentValueBinding="{Binding Key}" TransitionDuration="0">
+
+                <chartingToolkit:LineSeries.DataPointStyle>
+                    <Style TargetType="chartingToolkit:LineDataPoint">
+                        <Setter Property="Width" Value="0"/>
+                        <Setter Property="Height" Value="0"/>
+                        <Setter Property="Background" Value="Blue"/>
+                    </Style>
+                </chartingToolkit:LineSeries.DataPointStyle>
+
+            </chartingToolkit:LineSeries>
+
+            <chartingToolkit:LineSeries x:Name="FinalRfid" Title="RFID" AnimationSequence="FirstToLast"
+        		ItemsSource="{Binding}"
+        		DependentValueBinding="{Binding Value}" 
+        		IndependentValueBinding="{Binding Key}" TransitionDuration="0">
+
+                <chartingToolkit:LineSeries.DataPointStyle>
+                    <Style TargetType="chartingToolkit:LineDataPoint">
+                        <Setter Property="Width" Value="0"/>
+                        <Setter Property="Height" Value="0"/>
+                        <Setter Property="Background" Value="Aqua"/>
+                    </Style>
+                </chartingToolkit:LineSeries.DataPointStyle>
+
+            </chartingToolkit:LineSeries>
+
+            <chartingToolkit:LineSeries x:Name="FinalGPS" Title="GPS" AnimationSequence="FirstToLast"
+        		ItemsSource="{Binding}"
+        		DependentValueBinding="{Binding Value}" 
+        		IndependentValueBinding="{Binding Key}" TransitionDuration="0">
+
+                <chartingToolkit:LineSeries.DataPointStyle>
+                    <Style TargetType="chartingToolkit:LineDataPoint">
+                        <Setter Property="Width" Value="0"/>
+                        <Setter Property="Height" Value="0"/>
+                        <Setter Property="Background" Value="Chocolate"/>
+                    </Style>
+                </chartingToolkit:LineSeries.DataPointStyle>
+
+            </chartingToolkit:LineSeries>
+
+            <chartingToolkit:LineSeries x:Name="FinalPf" Title="PF" AnimationSequence="FirstToLast"
+        		ItemsSource="{Binding}"
+        		DependentValueBinding="{Binding Value}" 
+        		IndependentValueBinding="{Binding Key}" TransitionDuration="0">
+
+                <chartingToolkit:LineSeries.DataPointStyle>
+                    <Style TargetType="chartingToolkit:LineDataPoint">
+                        <Setter Property="Width" Value="0"/>
+                        <Setter Property="Height" Value="0"/>
+                        <Setter Property="Background" Value="Gray"/>
+                    </Style>
+                </chartingToolkit:LineSeries.DataPointStyle>
+
+            </chartingToolkit:LineSeries>
+
+            <chartingToolkit:LineSeries x:Name="FinalPfExt" Title="PF w/ walls" AnimationSequence="FirstToLast"
+        		ItemsSource="{Binding}"
+        		DependentValueBinding="{Binding Value}" 
+        		IndependentValueBinding="{Binding Key}" TransitionDuration="0">
+
+                <chartingToolkit:LineSeries.DataPointStyle>
+                    <Style TargetType="chartingToolkit:LineDataPoint">
+                        <Setter Property="Width" Value="0"/>
+                        <Setter Property="Height" Value="0"/>
+                        <Setter Property="Background" Value="LightGreen"/>
+                    </Style>
+                </chartingToolkit:LineSeries.DataPointStyle>
+
+            </chartingToolkit:LineSeries>
+
+            <chartingToolkit:LineSeries x:Name="FinalClustering" Title="Hybrid Clustering" AnimationSequence="FirstToLast"
+        		ItemsSource="{Binding}"
+        		DependentValueBinding="{Binding Value}" 
+        		IndependentValueBinding="{Binding Key}" TransitionDuration="0">
+
+                <chartingToolkit:LineSeries.DataPointStyle>
+                    <Style TargetType="chartingToolkit:LineDataPoint">
+                        <Setter Property="Width" Value="0"/>
+                        <Setter Property="Height" Value="0"/>
+                        <Setter Property="Background" Value="Black"/>
+                    </Style>
+                </chartingToolkit:LineSeries.DataPointStyle>
+                <chartingToolkit:LineSeries.PolylineStyle>
+                    <Style TargetType="Polyline">
+                        <Setter Property="StrokeDashArray" Value="4 2 4" />
+                    </Style>
+                </chartingToolkit:LineSeries.PolylineStyle>
+
+            </chartingToolkit:LineSeries>
+
+            <chartingToolkit:LineSeries x:Name="FinalWllsLeaveOut" Title="Hybrid LeaveOut" AnimationSequence="FirstToLast"
+        		ItemsSource="{Binding}"
+        		DependentValueBinding="{Binding Value}" 
+        		IndependentValueBinding="{Binding Key}" TransitionDuration="0">
+
+                <chartingToolkit:LineSeries.DataPointStyle>
+                    <Style TargetType="chartingToolkit:LineDataPoint">
+                        <Setter Property="Width" Value="0"/>
+                        <Setter Property="Height" Value="0"/>
+                        <Setter Property="Background" Value="Green"/>
+                    </Style>
+                </chartingToolkit:LineSeries.DataPointStyle>
+
+            </chartingToolkit:LineSeries>
+
+            <chartingToolkit:LineSeries x:Name="FinalHybridFing" Title="Hybrid fingerprinting" AnimationSequence="FirstToLast"
+        		ItemsSource="{Binding}"
+        		DependentValueBinding="{Binding Value}" 
+        		IndependentValueBinding="{Binding Key}" TransitionDuration="0">
+
+                <chartingToolkit:LineSeries.DataPointStyle>
+                    <Style TargetType="chartingToolkit:LineDataPoint">
+                        <Setter Property="Width" Value="0"/>
+                        <Setter Property="Height" Value="0"/>
+                        <Setter Property="Background" Value="Red"/>
+                    </Style>
+                </chartingToolkit:LineSeries.DataPointStyle>
+                <chartingToolkit:LineSeries.PolylineStyle>
+                    <Style TargetType="Polyline">
+                    </Style>
+                </chartingToolkit:LineSeries.PolylineStyle>
+
+            </chartingToolkit:LineSeries>
+
+            <chartingToolkit:LineSeries x:Name="FinalDistance" Title="Hybrid Distance" AnimationSequence="FirstToLast"
+        		ItemsSource="{Binding}"
+        		DependentValueBinding="{Binding Value}" 
+        		IndependentValueBinding="{Binding Key}" TransitionDuration="0" Margin="-3,0,3,0">
+
+                <chartingToolkit:LineSeries.DataPointStyle>
+                    <Style TargetType="chartingToolkit:LineDataPoint">
+                        <Setter Property="Width" Value="0"/>
+                        <Setter Property="Height" Value="0"/>
+                        <Setter Property="Background" Value="Red"/>
+                    </Style>
+                </chartingToolkit:LineSeries.DataPointStyle>
+
+                <!--
+                <chartingToolkit:LineSeries.PolylineStyle>
+                    <Style TargetType="Polyline">
+                        <Setter Property="StrokeDashArray" Value="4 2 4" />
+                    </Style>
+                </chartingToolkit:LineSeries.PolylineStyle>
+                -->
+
+            </chartingToolkit:LineSeries>
+
+
+        </chartingToolkit:Chart>
+        <Label Content="Error" HorizontalAlignment="Left" Margin="1080,48,0,0" VerticalAlignment="Top"/>
+        <Label Content="Variance" HorizontalAlignment="Left" Margin="1080,74,0,0" VerticalAlignment="Top"/>
+        <Label Name="lblError" Content="..." HorizontalAlignment="Left" Margin="1168,48,0,0" VerticalAlignment="Top"/>
+        <Label Name="lblVariance" Content="..." HorizontalAlignment="Left" Margin="1168,79,0,0" VerticalAlignment="Top"/>
+        <Label Name="lblIteration"  HorizontalAlignment="Left" Margin="1199,80,0,0" FontSize="50"  VerticalAlignment="Top"/>
+        <Button Content="CDF" HorizontalAlignment="Left" Margin="491,421,0,0" VerticalAlignment="Top" Width="87" Height="27" Click="CDF_click"/>
+
+
+
+    </Grid>
+</Window>
